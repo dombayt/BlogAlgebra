@@ -1,1 +1,2 @@
 ## Algebra Blog
+# Domagoj Bajtal
