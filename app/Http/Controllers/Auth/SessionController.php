@@ -55,7 +55,13 @@ class SessionController extends Controller
         // Attempt the Login
         $result = $this->authManager->authenticate($credentials, $remember);
 
-        // Return the appropriate response
+		if(get_class($result) === 'Centaur\Replies\SuccessReply') {
+		   // Return the appropriate response
+           $path = session()->pull('url.intended', route('dashboard'));
+           return $result->dispatch($path);
+		}
+        
+		// Return the appropriate response
         $path = session()->pull('url.intended', route('dashboard'));
         return $result->dispatch($path);
     }

@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
-// Authorization
+
+// Authorization 
 Route::get('login', ['as' => 'auth.login.form', 'uses' => 'Auth\SessionController@getLogin']);
 Route::post('login', ['as' => 'auth.login.attempt', 'uses' => 'Auth\SessionController@postLogin']);
 Route::get('logout', ['as' => 'auth.logout', 'uses' => 'Auth\SessionController@getLogout']);
